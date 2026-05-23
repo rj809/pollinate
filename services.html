@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>if(/Mobi|Android|iPhone/i.test(navigator.userAgent)||window.innerWidth<768){window.location.replace("/m/services.html");}</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Services — Pollinate</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Roboto+Slab:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream: #F7F3ED;
+  --cream-2: #EFEAE0;
+  --forest: #173426;
+  --forest-muted: #4A5A52;
+  --forest-deep: #0F2419;
+  --ink: #1C1C1A;
+  --terra: #C4623A;
+  --blush: #F2D4C8;
+  --pink: #D87F8E;
+  --sage: #A6B89A;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: var(--cream); color: var(--ink); font-family: 'Plus Jakarta Sans', sans-serif; -webkit-font-smoothing: antialiased; }
+a { color: inherit; text-decoration: none; }
+em { font-style: italic; font-weight: 500; }
+.container { max-width: 1180px; margin: 0 auto; padding: 0 32px; }
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--forest); color: var(--cream);
+  padding: 8px 18px; border-radius: 100px;
+  font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+}
+.eyebrow .dot { width: 6px; height: 6px; border-radius: 50%; background: #A6E07A; }
+
+/* NAV */
+nav.top {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 22px 32px; max-width: 1180px; margin: 0 auto;
+}
+.logo { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 22px; letter-spacing: -0.02em; color: var(--forest); }
+.logo .dot { color: var(--forest); }
+.nav-links { display: flex; gap: 32px; align-items: center; }
+.nav-links a { font-size: 14px; color: var(--ink); opacity: 0.75; }
+.nav-cta { background: var(--forest); color: var(--cream); padding: 11px 22px; border-radius: 100px; font-size: 14px; font-weight: 600; }
+
+/* HERO — SPLIT SCREEN */
+.hero-split {
+  position: relative;
+  height: 78vh;
+  min-height: 640px;
+  max-height: 820px;
+  overflow: hidden;
+}
+.hero-split-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 100%;
+}
+.hero-half {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  transition: filter 0.4s ease;
+  cursor: pointer;
+}
+.hero-half:hover { filter: brightness(1.04); }
+
+/* B2C half */
+.hero-half-b2c { background: var(--cream); }
+.hero-half-image {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.hero-half-image img {
+  width: 100%; height: 100%; object-fit: cover;
+  filter: saturate(0.92);
+}
+.hero-half-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(247,243,237,0.1) 0%, rgba(247,243,237,0.5) 70%, rgba(247,243,237,0.85) 100%);
+}
+
+/* B2B half */
+.hero-half-b2b { background: var(--forest); }
+.hero-half-graphic {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+/* Shared content block */
+.hero-half-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 48px 56px;
+  z-index: 2;
+}
+.hero-half-tag {
+  display: inline-block;
+  font-size: 11px; font-weight: 600; letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--forest);
+  margin-bottom: 14px;
+  padding: 6px 14px;
+  background: rgba(28,58,42,0.08);
+  border-radius: 100px;
+}
+.hero-half-tag-light {
+  color: var(--blush);
+  background: rgba(247,243,237,0.1);
+}
+.hero-half-title {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 42px; font-weight: 800; line-height: 1.05;
+  letter-spacing: -0.025em;
+  color: var(--forest);
+  margin-bottom: 14px;
+}
+.hero-half-title em {
+  font-style: italic; font-weight: 500;
+  color: var(--terra);
+}
+.hero-half-title-light { color: var(--cream); }
+.hero-half-title-light em { color: var(--blush); }
+.hero-half-line {
+  font-size: 15px; line-height: 1.5;
+  color: var(--forest-muted);
+  max-width: 360px;
+  margin-bottom: 22px;
+}
+.hero-half-line-light { color: rgba(247,243,237,0.75); }
+.hero-half-cta {
+  display: inline-flex;
+  align-items: center;
+  font-size: 14px; font-weight: 600;
+  color: var(--forest);
+  border-bottom: 1.5px solid var(--forest);
+  padding-bottom: 2px;
+}
+.hero-half-cta-light {
+  color: var(--blush);
+  border-bottom-color: var(--blush);
+}
+
+/* Centred floating headline */
+.hero-overlay-center {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 3;
+}
+.hero-overlay-inner {
+  background: var(--cream);
+  padding: 44px 56px;
+  border-radius: 24px;
+  text-align: center;
+  max-width: 620px;
+  box-shadow: 0 20px 60px rgba(28,58,42,0.18), 0 4px 16px rgba(28,58,42,0.08);
+  pointer-events: auto;
+}
+.hero-main-title {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 60px; font-weight: 800; line-height: 1.05;
+  color: var(--forest);
+  letter-spacing: -0.025em;
+  margin: 18px 0 18px;
+}
+.hero-main-title em {
+  color: var(--pink);
+  font-style: italic; font-weight: 600;
+}
+.hero-main-sub {
+  font-size: 16px; line-height: 1.55;
+  color: var(--forest-muted);
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+/* HERO (OLD — kept hidden for safety) */
+.hero {
+  padding: 60px 0 80px;
+  text-align: center;
+}
+.hero h1 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 72px; font-weight: 800; line-height: 1.05;
+  color: var(--forest); letter-spacing: -0.025em;
+  margin: 24px 0 24px;
+}
+.hero h1 em { color: var(--pink); font-style: italic; font-weight: 600; }
+.hero .sub {
+  max-width: 640px; margin: 0 auto;
+  font-size: 18px; line-height: 1.55; color: var(--forest-muted);
+}
+.hero-anchors {
+  display: inline-flex; gap: 12px; margin-top: 36px;
+}
+.hero-anchors a {
+  background: var(--cream-2); border: 1px solid rgba(28,58,42,0.12);
+  padding: 12px 22px; border-radius: 100px;
+  font-size: 14px; font-weight: 600; color: var(--forest);
+  transition: background 0.2s;
+}
+.hero-anchors a:hover { background: var(--blush); }
+
+/* STAT BAND */
+.stat-band {
+  background: var(--forest);
+  color: var(--cream);
+  padding: 60px 0;
+  text-align: center;
+}
+.stat-band-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  max-width: 900px; margin: 0 auto;
+  gap: 0;
+}
+.stat {
+  padding: 0 24px;
+  border-right: 1px solid rgba(247,243,237,0.18);
+}
+.stat:last-child { border-right: none; }
+.stat-num {
+  font-family: 'Roboto Slab', serif;
+  font-size: 64px; font-weight: 300; letter-spacing: -0.02em;
+  color: var(--blush);
+}
+.stat-label {
+  font-size: 12px; font-weight: 600; letter-spacing: 0.14em;
+  text-transform: uppercase; color: rgba(247,243,237,0.7);
+  margin-top: 8px;
+}
+
+/* TRACK BLOCKS — shared */
+.track-section { padding: 100px 0; }
+.track-header { max-width: 720px; margin: 0 auto 60px; text-align: center; }
+.track-header h2 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 56px; font-weight: 800; line-height: 1.08;
+  letter-spacing: -0.025em; margin: 20px 0 18px;
+}
+.track-header h2 em { font-style: italic; font-weight: 600; }
+.track-header .sub {
+  font-size: 17px; line-height: 1.55;
+  max-width: 580px; margin: 0 auto;
+}
+.who-line {
+  display: inline-block;
+  margin-top: 22px;
+  font-family: 'Roboto Slab', serif;
+  font-style: italic; font-weight: 400;
+  font-size: 14.5px;
+  padding: 8px 18px;
+  border-top: 1px solid rgba(28,58,42,0.15);
+  border-bottom: 1px solid rgba(28,58,42,0.15);
+}
+
+/* B2C SECTION (cream/blush) */
+.b2c-section { background: var(--cream); }
+.b2c-section .track-header h2 { color: var(--forest); }
+.b2c-section .track-header h2 em { color: var(--terra); }
+.b2c-section .track-header .sub { color: var(--forest-muted); }
+.b2c-section .who-line { color: var(--forest); }
+
+/* Pillar — varied layouts */
+.pillar { margin-bottom: 56px; }
+
+/* Pillar Layout A: title left, services in 3-col grid right */
+.pillar-a {
+  display: grid; grid-template-columns: 1fr 2fr; gap: 64px; align-items: start;
+}
+.pillar-a .pillar-title-block { padding-top: 8px; }
+.pillar-num {
+  font-family: 'Roboto Slab', serif;
+  font-size: 14px; font-weight: 500; letter-spacing: 0.18em;
+  color: var(--terra); text-transform: uppercase; margin-bottom: 12px;
+}
+.pillar-h {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 34px; font-weight: 800; line-height: 1.12;
+  letter-spacing: -0.02em; color: var(--forest); margin-bottom: 14px;
+}
+.pillar-h em { font-style: italic; font-weight: 600; color: var(--terra); }
+.pillar-line { font-size: 15px; color: var(--forest-muted); line-height: 1.55; }
+
+.service-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+}
+.service-card {
+  background: var(--cream);
+  border: 1px solid rgba(28,58,42,0.12);
+  border-radius: 16px; padding: 24px;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.service-card:hover { border-color: var(--terra); transform: translateY(-2px); }
+.service-card .name {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 16px; font-weight: 700; color: var(--forest);
+  margin-bottom: 8px;
+}
+.service-card .desc {
+  font-size: 13.5px; line-height: 1.55; color: var(--forest-muted);
+}
+
+/* Pillar Layout B: flipped — services left, title right */
+.pillar-b {
+  display: grid; grid-template-columns: 2fr 1fr; gap: 64px; align-items: start;
+}
+.pillar-b .pillar-title-block { padding-top: 8px; text-align: right; }
+
+/* Pillar Layout C: featured banner — full width dark card */
+.pillar-c {
+  background: var(--forest);
+  color: var(--cream);
+  border-radius: 32px;
+  padding: 56px 56px;
+}
+.pillar-c .pillar-num { color: var(--blush); }
+.pillar-c .pillar-h { color: var(--cream); }
+.pillar-c .pillar-h em { color: var(--blush); }
+.pillar-c .pillar-line { color: rgba(247,243,237,0.7); }
+.pillar-c-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px;
+  margin-top: 36px;
+}
+.pillar-c .service-card {
+  background: rgba(247,243,237,0.06);
+  border: 1px solid rgba(247,243,237,0.12);
+}
+.pillar-c .service-card:hover { border-color: var(--blush); }
+.pillar-c .service-card .name { color: var(--cream); }
+.pillar-c .service-card .desc { color: rgba(247,243,237,0.7); }
+
+/* PULL QUOTE INTERLUDE */
+.interlude {
+  background: var(--cream);
+  padding: 20px 24px 50px;
+  text-align: center;
+}
+.interlude blockquote {
+  max-width: 720px; margin: 0 auto;
+  font-family: 'Roboto Slab', serif;
+  font-weight: 300; font-style: italic;
+  font-size: 22px; line-height: 1.45;
+  color: var(--forest);
+}
+.interlude .hairline {
+  width: 32px; height: 1px; background: rgba(28,58,42,0.3);
+  margin: 0 auto 20px;
+}
+.interlude .attribution {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 12.5px; color: var(--forest); font-weight: 600;
+  letter-spacing: 0.01em; margin-top: 22px;
+}
+.interlude .attribution span { font-weight: 400; color: rgba(28,58,42,0.55); margin-left: 5px; }
+.interlude .bottom-hairline {
+  width: 32px; height: 1px; background: rgba(28,58,42,0.3);
+  margin: 24px auto 0;
+}
+
+/* B2B SECTION (forest green) */
+.b2b-section { background: var(--forest); color: var(--cream); }
+.b2b-section .track-header h2 { color: var(--cream); }
+.b2b-section .track-header h2 em { color: var(--blush); }
+.b2b-section .track-header .sub { color: rgba(247,243,237,0.75); }
+.b2b-section .who-line {
+  color: var(--cream);
+  border-top-color: rgba(247,243,237,0.25);
+  border-bottom-color: rgba(247,243,237,0.25);
+}
+.b2b-section .pillar-num { color: var(--blush); }
+.b2b-section .pillar-h { color: var(--cream); }
+.b2b-section .pillar-h em { color: var(--blush); }
+.b2b-section .pillar-line { color: rgba(247,243,237,0.7); }
+.b2b-section .service-card {
+  background: rgba(247,243,237,0.06);
+  border: 1px solid rgba(247,243,237,0.12);
+}
+.b2b-section .service-card:hover { border-color: var(--blush); transform: translateY(-2px); }
+.b2b-section .service-card .name { color: var(--cream); }
+.b2b-section .service-card .desc { color: rgba(247,243,237,0.7); }
+
+/* B2B Pillar 1 — Featured engine */
+.engine-banner {
+  background: rgba(247,243,237,0.04);
+  border: 1px solid rgba(247,243,237,0.12);
+  border-radius: 32px;
+  padding: 56px;
+  margin-bottom: 56px;
+}
+.engine-banner .pillar-num { color: var(--blush); }
+.engine-banner .engine-grid {
+  display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px;
+  margin-top: 32px;
+}
+.engine-banner .service-card { padding: 20px; }
+.engine-banner .service-card .name { font-size: 14.5px; }
+.engine-banner .service-card .desc { font-size: 12.5px; }
+
+/* INDUSTRIES PILL ROW */
+.industries-row {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;
+  max-width: 880px; margin: 60px auto 0;
+}
+.industry-pill {
+  background: rgba(247,243,237,0.08);
+  border: 1px solid rgba(247,243,237,0.18);
+  color: var(--cream);
+  padding: 10px 22px;
+  border-radius: 100px;
+  font-size: 14px; font-weight: 500;
+}
+.industries-title {
+  text-align: center;
+  font-size: 11px; font-weight: 600; letter-spacing: 0.18em;
+  text-transform: uppercase; color: rgba(247,243,237,0.55);
+  margin-top: 80px;
+}
+
+/* QUICK NOTE BAR */
+.quick-note {
+  background: var(--blush);
+  padding: 24px 32px;
+  border-radius: 16px;
+  text-align: center;
+  font-family: 'Roboto Slab', serif;
+  font-style: italic; font-weight: 400;
+  font-size: 17px; color: var(--forest);
+  max-width: 760px; margin: 50px auto 0;
+}
+
+/* FINAL CTA */
+.final-cta {
+  background: var(--pink);
+  padding: 100px 0;
+  text-align: center;
+}
+.final-cta h2 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 56px; font-weight: 800; color: var(--cream);
+  letter-spacing: -0.025em; line-height: 1.08;
+  margin-bottom: 20px;
+}
+.final-cta h2 em { color: var(--forest); font-style: italic; font-weight: 600; }
+.final-cta .sub {
+  font-size: 17px; color: rgba(247,243,237,0.9);
+  max-width: 480px; margin: 0 auto 36px;
+}
+.final-cta-btn {
+  background: var(--forest); color: var(--cream);
+  padding: 16px 36px; border-radius: 100px;
+  font-size: 15px; font-weight: 600; letter-spacing: 0.01em;
+  display: inline-block;
+}
+
+/* FOOTER */
+footer {
+  background: var(--forest); color: var(--cream);
+  padding: 80px 32px 28px;
+}
+.footer-inner { max-width: 1180px; margin: 0 auto; }
+.footer-top {
+  display: grid; grid-template-columns: 1.5fr 1fr 1.2fr;
+  gap: 48px; margin-bottom: 56px;
+}
+.footer-brand-title { font-size: 28px; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 12px; }
+.footer-brand-desc { font-size: 14px; opacity: 0.75; line-height: 1.55; max-width: 280px; }
+.footer-col-label { font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(247,243,237,0.5); margin-bottom: 16px; }
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.footer-col ul a { font-size: 14px; color: var(--cream); opacity: 0.85; }
+.footer-bottom {
+  border-top: 1px solid rgba(247,243,237,0.12);
+  padding-top: 24px;
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 12px; color: rgba(247,243,237,0.55);
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .hero-split { height: auto; min-height: 0; max-height: none; }
+  .hero-split-grid { grid-template-columns: 1fr; }
+  .hero-half { height: 360px; }
+  .hero-overlay-center {
+    position: relative;
+    inset: auto;
+    padding: 40px 24px;
+  }
+  .hero-overlay-inner {
+    padding: 32px 28px;
+    box-shadow: 0 10px 30px rgba(28,58,42,0.12);
+  }
+  .hero-main-title { font-size: 40px; }
+  .hero-half-content { padding: 36px 32px; }
+  .hero-half-title { font-size: 32px; }
+  .hero h1 { font-size: 52px; }
+  .track-header h2 { font-size: 42px; }
+  .pillar-a, .pillar-b { grid-template-columns: 1fr; gap: 32px; }
+  .pillar-b .pillar-title-block { text-align: left; }
+  .service-grid, .pillar-c-grid, .engine-banner .engine-grid { grid-template-columns: repeat(2, 1fr); }
+  .stat-num { font-size: 48px; }
+  .final-cta h2 { font-size: 40px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="top">
+  <div class="logo">pollinate<span class="dot">.</span></div>
+  <div class="nav-links">
+    <a href="/">Home</a>
+    <a href="/services">Services</a>
+    <a href="/#story">How it works</a>
+    <a href="/#faq">FAQ</a>
+    <a href="#contact" class="nav-cta">Book a Call</a>
+  </div>
+</nav>
+
+<!-- HERO — Split screen -->
+<section class="hero-split">
+  <div class="hero-split-grid">
+
+    <!-- LEFT: B2C side -->
+    <a href="#b2c" class="hero-half hero-half-b2c">
+      <div class="hero-half-image">
+        <img src="hero-1.avif" alt="Florist arranging flowers at workbench" />
+        <div class="hero-half-overlay"></div>
+      </div>
+      <div class="hero-half-content">
+        <div class="hero-half-tag">For Consumers</div>
+        <h2 class="hero-half-title">B2C<br><em>Consumer Growth.</em></h2>
+        <p class="hero-half-line">From storefront to inbox — the brand customers return to.</p>
+        <div class="hero-half-cta">Explore B2C ↓</div>
+      </div>
+    </a>
+
+    <!-- RIGHT: B2B side -->
+    <a href="#b2b" class="hero-half hero-half-b2b">
+      <div class="hero-half-graphic">
+        <!-- Subtle geometric / network graphic -->
+        <svg width="100%" height="100%" viewBox="0 0 600 800" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="b2b-glow" cx="50%" cy="40%" r="60%">
+              <stop offset="0%" stop-color="#F2D4C8" stop-opacity="0.18"/>
+              <stop offset="60%" stop-color="#F2D4C8" stop-opacity="0.04"/>
+              <stop offset="100%" stop-color="#F2D4C8" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+          <rect width="600" height="800" fill="url(#b2b-glow)"/>
+          <!-- Network nodes -->
+          <g opacity="0.35" stroke="#F2D4C8" stroke-width="0.8" fill="none">
+            <line x1="300" y1="320" x2="180" y2="220"/>
+            <line x1="300" y1="320" x2="420" y2="220"/>
+            <line x1="300" y1="320" x2="120" y2="380"/>
+            <line x1="300" y1="320" x2="480" y2="380"/>
+            <line x1="300" y1="320" x2="220" y2="500"/>
+            <line x1="300" y1="320" x2="380" y2="500"/>
+            <line x1="180" y1="220" x2="420" y2="220"/>
+            <line x1="120" y1="380" x2="220" y2="500"/>
+            <line x1="480" y1="380" x2="380" y2="500"/>
+          </g>
+          <g fill="#F2D4C8" opacity="0.85">
+            <circle cx="300" cy="320" r="5"/>
+            <circle cx="180" cy="220" r="3.5"/>
+            <circle cx="420" cy="220" r="3.5"/>
+            <circle cx="120" cy="380" r="3.5"/>
+            <circle cx="480" cy="380" r="3.5"/>
+            <circle cx="220" cy="500" r="3.5"/>
+            <circle cx="380" cy="500" r="3.5"/>
+          </g>
+          <g fill="#A6E07A" opacity="0.9">
+            <circle cx="300" cy="320" r="2"/>
+          </g>
+        </svg>
+      </div>
+      <div class="hero-half-content hero-half-content-light">
+        <div class="hero-half-tag hero-half-tag-light">For Business Clients</div>
+        <h2 class="hero-half-title hero-half-title-light">B2B<br><em>Enterprise Growth.</em></h2>
+        <p class="hero-half-line hero-half-line-light">From positioning to pipeline — the system that opens enterprise doors.</p>
+        <div class="hero-half-cta hero-half-cta-light">Explore B2B ↓</div>
+      </div>
+    </a>
+
+  </div>
+
+  <!-- Centred floating headline ON TOP of the split -->
+  <div class="hero-overlay-center">
+    <div class="hero-overlay-inner">
+      <div class="eyebrow"><span class="dot"></span>Services</div>
+      <h1 class="hero-main-title">Two engines.<br><em>One operator.</em></h1>
+      <p class="hero-main-sub">We design and operate the full marketing and sales stack — so your flowers reach the right customer, and your business reaches the right buyer.</p>
+    </div>
+  </div>
+
+</section>
+
+<!-- B2C SECTION -->
+<section class="track-section b2c-section" id="b2c">
+  <div class="container">
+
+    <div class="track-header">
+      <div class="eyebrow"><span class="dot"></span>B2C — Consumer Growth</div>
+      <h2>We build the brand customers <em>return to.</em></h2>
+      <p class="sub">From storefront to inbox — we architect the systems that grow your audience, deepen loyalty, and turn flowers into a brand that lasts.</p>
+      <div class="who-line">For floral studios, boutique shops and brands serving discerning consumers — couples, gift-buyers, regulars.</div>
+    </div>
+
+    <!-- Pillar 1 — Layout A (title left, services right) -->
+    <div class="pillar pillar-a">
+      <div class="pillar-title-block">
+        <div class="pillar-num">Pillar 01</div>
+        <h3 class="pillar-h">Brand <em>Foundation.</em></h3>
+        <p class="pillar-line">A considered website, distinct identity and an always-on content engine — built to convert.</p>
+      </div>
+      <div class="service-grid">
+        <div class="service-card">
+          <div class="name">Website Development</div>
+          <div class="desc">We design, develop and operate websites built to convert — Shopify, custom builds, gifting, subscriptions, the lot.</div>
+        </div>
+        <div class="service-card">
+          <div class="name">Brand Identity</div>
+          <div class="desc">Visual identity systems that feel as considered as your floristry.</div>
+        </div>
+        <div class="service-card">
+          <div class="name">Content Production</div>
+          <div class="desc">Shoot ideation, raw footage editing, AI-generated photo and video — your brand, scaled.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pillar 2 — Layout B (services left, title right) -->
+    <div class="pillar pillar-b">
+      <div class="service-grid">
+        <div class="service-card">
+          <div class="name">Social Media Management</div>
+          <div class="desc">Instagram and TikTok run like a content engine — strategy, captions, scheduling, community, growth.</div>
+        </div>
+        <div class="service-card">
+          <div class="name">Performance Marketing</div>
+          <div class="desc">Paid acquisition across Google, Meta and TikTok — built to scale, measured to the pound.</div>
+        </div>
+        <div class="service-card">
+          <div class="name">SEO &amp; GEO</div>
+          <div class="desc">Discovery on traditional search and the new generation of AI engines reshaping how customers find you.</div>
+        </div>
+      </div>
+      <div class="pillar-title-block">
+        <div class="pillar-num">Pillar 02</div>
+        <h3 class="pillar-h">Customer <em>Acquisition.</em></h3>
+        <p class="pillar-line">Social, paid and search architecture that turns reach into revenue.</p>
+      </div>
+    </div>
+
+    <!-- Pillar 3 — Layout C (featured dark banner) -->
+    <div class="pillar pillar-c">
+      <div class="pillar-num">Pillar 03</div>
+      <h3 class="pillar-h">Lifetime <em>Value.</em></h3>
+      <p class="pillar-line">Email, WhatsApp and automation systems that transform first-time buyers into regulars.</p>
+      <div class="pillar-c-grid">
+        <div class="service-card">
+          <div class="name">Email Marketing</div>
+          <div class="desc">Automated flows, monthly campaigns and post-purchase journeys that drive repeat revenue while you sleep.</div>
+        </div>
+        <div class="service-card">
+          <div class="name">WhatsApp Marketing</div>
+          <div class="desc">Personal, direct, fast — for the moments email can't reach.</div>
+        </div>
+        <div class="service-card">
+          <div class="name">Subscription &amp; Loyalty</div>
+          <div class="desc">Recurring revenue infrastructure built around the way florists actually sell.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- INTERLUDE — Bella's quote -->
+<section class="interlude">
+  <div class="hairline"></div>
+  <blockquote>
+    &ldquo;We were juggling three different freelancers and nothing felt consistent. Pollinate came in and just took it all over &mdash; our brand finally looks like us, our wedding enquiries have <span style="font-weight:500;background:linear-gradient(180deg,transparent 65%,rgba(228,153,131,0.35) 65%,rgba(228,153,131,0.35) 92%,transparent 92%);padding:0 3px">doubled</span>, and the leads actually convert.&rdquo;
+  </blockquote>
+  <div class="attribution">
+    Bella Petals<span>&middot; London</span>
+  </div>
+  <div class="bottom-hairline"></div>
+</section>
+
+<!-- B2B SECTION -->
+<section class="track-section b2b-section" id="b2b">
+  <div class="container">
+
+    <div class="track-header">
+      <div class="eyebrow" style="background:var(--blush);color:var(--forest)"><span class="dot" style="background:var(--forest)"></span>B2B — Business Clients</div>
+      <h2>We build the GTM system that opens <em>enterprise doors.</em></h2>
+      <p class="sub">From positioning to pipeline — we architect the engine, run the outreach and book the meetings that build your B2B business.</p>
+      <div class="who-line">For florists whose growth depends on hotels, wedding planners, corporates, event producers, restaurants and luxury retail.</div>
+    </div>
+
+    <!-- Pillar 1 — Featured engine banner -->
+    <div class="engine-banner">
+      <div class="pillar-num">Pillar 01 — The Engine</div>
+      <h3 class="pillar-h">Go-to-Market <em>Engine.</em></h3>
+      <p class="pillar-line">Omni-channel outreach across every channel your buyer uses — engineered to convert cold to closed.</p>
+      <div class="engine-grid">
+        <div class="service-card">
+          <div class="name">Email Outreach</div>
+          <div class="desc">Cold sequences that read like a human wrote them. Tested, iterated, optimised for reply rates.</div>
+        </div>
+        <div class="service-card">
+          <div class="name">LinkedIn Outreach</div>
+          <div class="desc">Daily, intelligent prospecting on the network where your buyers already are.</div>
+        </div>
+        <div class="service-card">
+          <div class="name">WhatsApp Outreach</div>
+          <div class="desc">Warm follow-up and nurture for prospects already in your orbit.</div>
+        </div>
+        <div class="service-card">
+          <div class="name">AI Voice Calling</div>
+          <div class="desc">Trained in your voice. Answers every inbound, follows every lead, books real meetings around the clock.</div>
+        </div>
+        <div class="service-card">
+          <div class="name">Lead Qualification &amp; CRM</div>
+          <div class="desc">Every signal scored, every lead tracked, every conversation logged.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pillar 2 — Layout A -->
+    <div class="pillar pillar-a">
+      <div class="pillar-title-block">
+        <div class="pillar-num">Pillar 02</div>
+        <h3 class="pillar-h">Brand &amp; <em>Positioning.</em></h3>
+        <p class="pillar-line">The credibility infrastructure that makes enterprise buyers say yes.</p>
+      </div>
+      <div class="service-grid" style="grid-template-columns:repeat(2,1fr)">
+        <div class="service-card">
+          <div class="name">Industry-Specific Positioning</div>
+          <div class="desc">Distinct narratives and messaging for each buyer type — hotels, planners, corporates.</div>
+        </div>
+        <div class="service-card">
+          <div class="name">LinkedIn Profile Build</div>
+          <div class="desc">Founder profiles and company pages rebuilt as live sales channels.</div>
+        </div>
+        <div class="service-card">
+          <div class="name">Sales Assets</div>
+          <div class="desc">Landing pages, brochures, decks and case studies — the materials your buyers need to say yes internally.</div>
+        </div>
+        <div class="service-card">
+          <div class="name">Newsletter &amp; Content Marketing</div>
+          <div class="desc">Thought leadership that builds authority while you sleep.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pillar 3 — Layout B -->
+    <div class="pillar pillar-b">
+      <div class="service-grid">
+        <div class="service-card">
+          <div class="name">Account-Based Marketing</div>
+          <div class="desc">Multi-touch, multi-channel campaigns aimed at your highest-value accounts.</div>
+        </div>
+        <div class="service-card">
+          <div class="name">SEO &amp; GEO for B2B</div>
+          <div class="desc">Found by buyers searching on Google and by AI engines like ChatGPT — built for B2B intent.</div>
+        </div>
+        <div class="service-card">
+          <div class="name">Industry-Specific Landing Pages</div>
+          <div class="desc">Tailored conversion engines for hotels, weddings, corporate gifting, events.</div>
+        </div>
+      </div>
+      <div class="pillar-title-block">
+        <div class="pillar-num">Pillar 03</div>
+        <h3 class="pillar-h">Demand <em>Architecture.</em></h3>
+        <p class="pillar-line">Inbound systems that bring qualified buyers to you.</p>
+      </div>
+    </div>
+
+    <!-- Industries served -->
+    <div class="industries-title">Industries we serve</div>
+    <div class="industries-row">
+      <div class="industry-pill">Hotels &amp; Hospitality</div>
+      <div class="industry-pill">Wedding Planners</div>
+      <div class="industry-pill">Corporate Gifting</div>
+      <div class="industry-pill">Event Production</div>
+      <div class="industry-pill">Restaurants</div>
+      <div class="industry-pill">Luxury Retail</div>
+    </div>
+
+    <!-- Speed signal -->
+    <div class="quick-note">
+      Live activity from week one — not paid pilots that take months.
+    </div>
+
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <div class="container">
+    <h2>Ready to build<br>the <em>engine?</em></h2>
+    <p class="sub">A 15-minute call to see if we're the right fit. No pitch. No pressure. Just a conversation.</p>
+    <a href="#contact" class="final-cta-btn">Book a Free Strategy Call →</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-title">pollinate<span style="color:var(--blush)">.</span></div>
+        <p class="footer-brand-desc">The growth agency for florists. We handle your marketing so you can handle your craft.</p>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-label">Company</div>
+        <ul>
+          <li><a href="/services">Services</a></li>
+          <li><a href="/#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-label">Get in touch</div>
+        <ul>
+          <li><a href="mailto:hello@pollinate.ae">hello@pollinate.ae</a></li>
+          <li><a href="/#contact">Book a call</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 Pollinate. All rights reserved.</div>
+      <div><a href="/privacy" style="opacity:0.7">Privacy</a> · <a href="/terms" style="opacity:0.7;margin-left:8px">Terms</a></div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

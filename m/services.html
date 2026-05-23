@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Services — Pollinate</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Roboto+Slab:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream: #F7F3ED;
+  --cream-2: #EFEAE0;
+  --forest: #173426;
+  --forest-muted: #4A5A52;
+  --forest-deep: #0F2419;
+  --ink: #1C1C1A;
+  --terra: #C4623A;
+  --blush: #F2D4C8;
+  --pink: #D87F8E;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: var(--cream); color: var(--ink); font-family: 'Plus Jakarta Sans', sans-serif; -webkit-font-smoothing: antialiased; }
+a { color: inherit; text-decoration: none; }
+em { font-style: italic; font-weight: 500; }
+
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--forest); color: var(--cream);
+  padding: 7px 14px; border-radius: 100px;
+  font-size: 10px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+}
+.eyebrow .dot { width: 5px; height: 5px; border-radius: 50%; background: #A6E07A; }
+
+/* NAV */
+nav.top {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 18px 20px;
+}
+.logo { font-weight: 800; font-size: 19px; letter-spacing: -0.02em; color: var(--forest); }
+.logo .dot { color: var(--forest); }
+.nav-cta { background: var(--forest); color: var(--cream); padding: 9px 16px; border-radius: 100px; font-size: 12.5px; font-weight: 600; }
+
+/* HERO — Mobile stacked split */
+.hero-mobile { background: var(--cream); }
+.hero-title-block {
+  padding: 24px 20px 36px;
+  text-align: center;
+}
+.hero-title-block h1 {
+  font-size: 36px; font-weight: 800; line-height: 1.08;
+  color: var(--forest); letter-spacing: -0.02em;
+  margin: 16px 0 14px;
+}
+.hero-title-block h1 em { color: var(--pink); font-style: italic; font-weight: 600; }
+.hero-title-block .sub {
+  font-size: 14px; line-height: 1.55; color: var(--forest-muted);
+  max-width: 360px; margin: 0 auto;
+}
+
+/* Half blocks */
+.hero-half {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  height: 280px;
+}
+.hero-half-b2c { background: var(--cream); }
+.hero-half-b2b { background: var(--forest); }
+.hero-half-image, .hero-half-graphic {
+  position: absolute; inset: 0; z-index: 0;
+}
+.hero-half-image img {
+  width: 100%; height: 100%; object-fit: cover;
+  filter: saturate(0.92);
+}
+.hero-half-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(247,243,237,0.08) 0%, rgba(247,243,237,0.45) 60%, rgba(247,243,237,0.85) 100%);
+}
+.hero-half-content {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  padding: 24px 22px;
+  z-index: 2;
+}
+.hero-half-tag {
+  display: inline-block;
+  font-size: 9px; font-weight: 600; letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--forest);
+  margin-bottom: 10px;
+  padding: 5px 11px;
+  background: rgba(28,58,42,0.08);
+  border-radius: 100px;
+}
+.hero-half-tag-light {
+  color: var(--blush);
+  background: rgba(247,243,237,0.1);
+}
+.hero-half-title {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 26px; font-weight: 800; line-height: 1.08;
+  letter-spacing: -0.02em;
+  color: var(--forest);
+  margin-bottom: 12px;
+}
+.hero-half-title em { font-style: italic; font-weight: 500; color: var(--terra); }
+.hero-half-title-light { color: var(--cream); }
+.hero-half-title-light em { color: var(--blush); }
+.hero-half-cta {
+  display: inline-flex; align-items: center;
+  font-size: 12.5px; font-weight: 600;
+  color: var(--forest);
+  border-bottom: 1.5px solid var(--forest);
+  padding-bottom: 2px;
+}
+.hero-half-cta-light {
+  color: var(--blush);
+  border-bottom-color: var(--blush);
+}
+
+/* HERO (old) */
+.hero { padding: 24px 20px 48px; text-align: center; }
+.hero h1 {
+  font-size: 38px; font-weight: 800; line-height: 1.08;
+  color: var(--forest); letter-spacing: -0.02em;
+  margin: 18px 0 16px;
+}
+.hero h1 em { color: var(--pink); font-style: italic; font-weight: 600; }
+.hero .sub {
+  font-size: 15px; line-height: 1.55; color: var(--forest-muted);
+}
+.hero-anchors {
+  display: flex; flex-direction: column; gap: 8px;
+  max-width: 280px; margin: 28px auto 0;
+}
+.hero-anchors a {
+  background: var(--cream-2);
+  border: 1px solid rgba(28,58,42,0.12);
+  padding: 12px 18px; border-radius: 100px;
+  font-size: 13px; font-weight: 600; color: var(--forest);
+}
+
+/* STAT BAND */
+.stat-band {
+  background: var(--forest);
+  color: var(--cream);
+  padding: 40px 20px;
+}
+.stat-band-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  max-width: 480px; margin: 0 auto;
+}
+.stat {
+  text-align: center;
+  padding: 0 8px;
+  border-right: 1px solid rgba(247,243,237,0.18);
+}
+.stat:last-child { border-right: none; }
+.stat-num {
+  font-family: 'Roboto Slab', serif;
+  font-size: 40px; font-weight: 300; letter-spacing: -0.02em;
+  color: var(--blush);
+}
+.stat-label {
+  font-size: 9px; font-weight: 600; letter-spacing: 0.12em;
+  text-transform: uppercase; color: rgba(247,243,237,0.7);
+  margin-top: 4px;
+}
+
+/* TRACK SECTIONS */
+.track-section { padding: 56px 20px; }
+.track-header { text-align: center; max-width: 480px; margin: 0 auto 36px; }
+.track-header h2 {
+  font-size: 30px; font-weight: 800; line-height: 1.1;
+  letter-spacing: -0.02em; margin: 16px 0 12px;
+}
+.track-header h2 em { font-style: italic; font-weight: 600; }
+.track-header .sub {
+  font-size: 14.5px; line-height: 1.55;
+}
+.who-line {
+  display: inline-block;
+  margin-top: 16px;
+  font-family: 'Roboto Slab', serif;
+  font-style: italic; font-weight: 400;
+  font-size: 12.5px; line-height: 1.5;
+  padding: 8px 14px;
+  border-top: 1px solid rgba(28,58,42,0.15);
+  border-bottom: 1px solid rgba(28,58,42,0.15);
+}
+
+/* B2C */
+.b2c-section { background: var(--cream); }
+.b2c-section .track-header h2 { color: var(--forest); }
+.b2c-section .track-header h2 em { color: var(--terra); }
+.b2c-section .track-header .sub { color: var(--forest-muted); }
+.b2c-section .who-line { color: var(--forest); }
+
+/* Pillar — mobile vertical */
+.pillar { margin-bottom: 36px; }
+.pillar-title-block { margin-bottom: 18px; }
+.pillar-num {
+  font-family: 'Roboto Slab', serif;
+  font-size: 11px; font-weight: 500; letter-spacing: 0.16em;
+  color: var(--terra); text-transform: uppercase; margin-bottom: 8px;
+}
+.pillar-h {
+  font-size: 24px; font-weight: 800; line-height: 1.12;
+  letter-spacing: -0.02em; color: var(--forest); margin-bottom: 8px;
+}
+.pillar-h em { font-style: italic; font-weight: 600; color: var(--terra); }
+.pillar-line {
+  font-size: 14px; color: var(--forest-muted); line-height: 1.55;
+}
+.service-grid {
+  display: flex; flex-direction: column; gap: 10px;
+}
+.service-card {
+  background: var(--cream);
+  border: 1px solid rgba(28,58,42,0.12);
+  border-radius: 14px; padding: 18px;
+}
+.service-card .name {
+  font-size: 14.5px; font-weight: 700; color: var(--forest);
+  margin-bottom: 6px;
+}
+.service-card .desc {
+  font-size: 13px; line-height: 1.55; color: var(--forest-muted);
+}
+
+/* Pillar C — dark banner on mobile */
+.pillar-c {
+  background: var(--forest);
+  color: var(--cream);
+  border-radius: 20px;
+  padding: 28px 22px;
+}
+.pillar-c .pillar-num { color: var(--blush); }
+.pillar-c .pillar-h { color: var(--cream); }
+.pillar-c .pillar-h em { color: var(--blush); }
+.pillar-c .pillar-line { color: rgba(247,243,237,0.7); }
+.pillar-c .service-card {
+  background: rgba(247,243,237,0.06);
+  border: 1px solid rgba(247,243,237,0.12);
+}
+.pillar-c .service-card .name { color: var(--cream); }
+.pillar-c .service-card .desc { color: rgba(247,243,237,0.7); }
+.pillar-c .service-grid { margin-top: 20px; }
+
+/* INTERLUDE */
+.interlude {
+  background: var(--cream);
+  padding: 16px 24px 32px;
+  text-align: center;
+}
+.interlude blockquote {
+  max-width: 480px; margin: 0 auto;
+  font-family: 'Roboto Slab', serif;
+  font-weight: 300; font-style: italic;
+  font-size: 16px; line-height: 1.5;
+  color: var(--forest);
+}
+.interlude .hairline {
+  width: 24px; height: 1px; background: rgba(28,58,42,0.3);
+  margin: 0 auto 16px;
+}
+.interlude .attribution {
+  font-size: 11px; color: var(--forest); font-weight: 600;
+  letter-spacing: 0.01em; margin-top: 16px;
+}
+.interlude .attribution span { font-weight: 400; color: rgba(28,58,42,0.55); margin-left: 3px; }
+.interlude .bottom-hairline {
+  width: 24px; height: 1px; background: rgba(28,58,42,0.3);
+  margin: 18px auto 0;
+}
+
+/* B2B */
+.b2b-section { background: var(--forest); color: var(--cream); }
+.b2b-section .track-header h2 { color: var(--cream); }
+.b2b-section .track-header h2 em { color: var(--blush); }
+.b2b-section .track-header .sub { color: rgba(247,243,237,0.75); }
+.b2b-section .who-line {
+  color: var(--cream);
+  border-top-color: rgba(247,243,237,0.25);
+  border-bottom-color: rgba(247,243,237,0.25);
+}
+.b2b-section .pillar-num { color: var(--blush); }
+.b2b-section .pillar-h { color: var(--cream); }
+.b2b-section .pillar-h em { color: var(--blush); }
+.b2b-section .pillar-line { color: rgba(247,243,237,0.7); }
+.b2b-section .service-card {
+  background: rgba(247,243,237,0.06);
+  border: 1px solid rgba(247,243,237,0.12);
+}
+.b2b-section .service-card .name { color: var(--cream); }
+.b2b-section .service-card .desc { color: rgba(247,243,237,0.7); }
+
+/* Engine banner — featured B2B pillar 1 */
+.engine-banner {
+  background: rgba(247,243,237,0.04);
+  border: 1px solid rgba(247,243,237,0.12);
+  border-radius: 20px;
+  padding: 28px 22px;
+  margin-bottom: 36px;
+}
+.engine-banner .pillar-num { color: var(--blush); }
+.engine-banner .service-grid { margin-top: 20px; }
+
+/* INDUSTRIES */
+.industries-title {
+  text-align: center;
+  font-size: 10px; font-weight: 600; letter-spacing: 0.16em;
+  text-transform: uppercase; color: rgba(247,243,237,0.55);
+  margin-top: 40px;
+}
+.industries-row {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 8px;
+  margin-top: 18px;
+}
+.industry-pill {
+  background: rgba(247,243,237,0.08);
+  border: 1px solid rgba(247,243,237,0.18);
+  color: var(--cream);
+  padding: 8px 16px;
+  border-radius: 100px;
+  font-size: 12px; font-weight: 500;
+}
+
+/* QUICK NOTE */
+.quick-note {
+  background: var(--blush);
+  padding: 18px 22px;
+  border-radius: 14px;
+  text-align: center;
+  font-family: 'Roboto Slab', serif;
+  font-style: italic; font-weight: 400;
+  font-size: 14.5px; line-height: 1.45; color: var(--forest);
+  margin: 32px 0 0;
+}
+
+/* FINAL CTA */
+.final-cta {
+  background: var(--pink);
+  padding: 56px 24px;
+  text-align: center;
+}
+.final-cta h2 {
+  font-size: 34px; font-weight: 800; color: var(--cream);
+  letter-spacing: -0.02em; line-height: 1.1;
+  margin-bottom: 14px;
+}
+.final-cta h2 em { color: var(--forest); font-style: italic; font-weight: 600; }
+.final-cta .sub {
+  font-size: 14.5px; color: rgba(247,243,237,0.9);
+  margin: 0 auto 24px; line-height: 1.55;
+}
+.final-cta-btn {
+  background: var(--forest); color: var(--cream);
+  padding: 13px 26px; border-radius: 100px;
+  font-size: 14px; font-weight: 600;
+  display: inline-block;
+}
+
+/* FOOTER */
+footer {
+  background: var(--forest); color: var(--cream);
+  padding: 56px 24px 24px;
+}
+.footer-top {
+  display: flex; flex-direction: column; gap: 32px;
+  margin-bottom: 32px;
+}
+.footer-brand-title { font-size: 24px; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 10px; }
+.footer-brand-desc { font-size: 13.5px; opacity: 0.75; line-height: 1.55; max-width: 320px; }
+.footer-col-label { font-size: 10px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(247,243,237,0.5); margin-bottom: 12px; }
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+.footer-col ul a { font-size: 13.5px; color: var(--cream); opacity: 0.85; }
+.footer-bottom {
+  border-top: 1px solid rgba(247,243,237,0.12);
+  padding-top: 20px;
+  text-align: center;
+  font-size: 11px; color: rgba(247,243,237,0.55);
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="top">
+  <div class="logo">pollinate<span class="dot">.</span></div>
+  <a href="#contact" class="nav-cta">Book a Call</a>
+</nav>
+
+<!-- HERO — Mobile stacked split -->
+<section class="hero-mobile">
+
+  <!-- Top: title block -->
+  <div class="hero-title-block">
+    <div class="eyebrow"><span class="dot"></span>Services</div>
+    <h1>Two engines.<br><em>One operator.</em></h1>
+    <p class="sub">We design and operate the full marketing and sales stack — so your flowers reach the right customer, and your business reaches the right buyer.</p>
+  </div>
+
+  <!-- B2C half -->
+  <a href="#b2c" class="hero-half hero-half-b2c">
+    <div class="hero-half-image">
+      <img src="hero-1.avif" alt="Florist arranging flowers at workbench" />
+      <div class="hero-half-overlay"></div>
+    </div>
+    <div class="hero-half-content">
+      <div class="hero-half-tag">For Consumers</div>
+      <div class="hero-half-title">B2C<br><em>Consumer Growth.</em></div>
+      <div class="hero-half-cta">Explore B2C ↓</div>
+    </div>
+  </a>
+
+  <!-- B2B half -->
+  <a href="#b2b" class="hero-half hero-half-b2b">
+    <div class="hero-half-graphic">
+      <svg width="100%" height="100%" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="b2b-glow-m" cx="50%" cy="40%" r="60%">
+            <stop offset="0%" stop-color="#F2D4C8" stop-opacity="0.18"/>
+            <stop offset="100%" stop-color="#F2D4C8" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <rect width="400" height="300" fill="url(#b2b-glow-m)"/>
+        <g opacity="0.4" stroke="#F2D4C8" stroke-width="0.8" fill="none">
+          <line x1="200" y1="140" x2="120" y2="80"/>
+          <line x1="200" y1="140" x2="280" y2="80"/>
+          <line x1="200" y1="140" x2="80" y2="180"/>
+          <line x1="200" y1="140" x2="320" y2="180"/>
+          <line x1="200" y1="140" x2="160" y2="240"/>
+          <line x1="200" y1="140" x2="240" y2="240"/>
+        </g>
+        <g fill="#F2D4C8" opacity="0.85">
+          <circle cx="200" cy="140" r="4"/>
+          <circle cx="120" cy="80" r="3"/>
+          <circle cx="280" cy="80" r="3"/>
+          <circle cx="80" cy="180" r="3"/>
+          <circle cx="320" cy="180" r="3"/>
+          <circle cx="160" cy="240" r="3"/>
+          <circle cx="240" cy="240" r="3"/>
+        </g>
+        <circle cx="200" cy="140" r="1.8" fill="#A6E07A"/>
+      </svg>
+    </div>
+    <div class="hero-half-content hero-half-content-light">
+      <div class="hero-half-tag hero-half-tag-light">For Business Clients</div>
+      <div class="hero-half-title hero-half-title-light">B2B<br><em>Enterprise Growth.</em></div>
+      <div class="hero-half-cta hero-half-cta-light">Explore B2B ↓</div>
+    </div>
+  </a>
+
+</section>
+
+<!-- B2C -->
+<section class="track-section b2c-section" id="b2c">
+
+  <div class="track-header">
+    <div class="eyebrow"><span class="dot"></span>B2C — Consumer Growth</div>
+    <h2>We build the brand customers <em>return to.</em></h2>
+    <p class="sub">From storefront to inbox — we architect the systems that grow your audience, deepen loyalty, and turn flowers into a brand that lasts.</p>
+    <div class="who-line">For floral studios and boutique shops serving discerning consumers.</div>
+  </div>
+
+  <!-- Pillar 1 -->
+  <div class="pillar">
+    <div class="pillar-title-block">
+      <div class="pillar-num">Pillar 01</div>
+      <h3 class="pillar-h">Brand <em>Foundation.</em></h3>
+      <p class="pillar-line">A considered website, distinct identity and an always-on content engine — built to convert.</p>
+    </div>
+    <div class="service-grid">
+      <div class="service-card">
+        <div class="name">Website Development</div>
+        <div class="desc">We design, develop and operate websites built to convert — Shopify, custom builds, gifting, subscriptions, the lot.</div>
+      </div>
+      <div class="service-card">
+        <div class="name">Brand Identity</div>
+        <div class="desc">Visual identity systems that feel as considered as your floristry.</div>
+      </div>
+      <div class="service-card">
+        <div class="name">Content Production</div>
+        <div class="desc">Shoot ideation, raw footage editing, AI-generated photo and video — your brand, scaled.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pillar 2 -->
+  <div class="pillar">
+    <div class="pillar-title-block">
+      <div class="pillar-num">Pillar 02</div>
+      <h3 class="pillar-h">Customer <em>Acquisition.</em></h3>
+      <p class="pillar-line">Social, paid and search architecture that turns reach into revenue.</p>
+    </div>
+    <div class="service-grid">
+      <div class="service-card">
+        <div class="name">Social Media Management</div>
+        <div class="desc">Instagram and TikTok run like a content engine — strategy, captions, scheduling, community, growth.</div>
+      </div>
+      <div class="service-card">
+        <div class="name">Performance Marketing</div>
+        <div class="desc">Paid acquisition across Google, Meta and TikTok — built to scale, measured to the pound.</div>
+      </div>
+      <div class="service-card">
+        <div class="name">SEO &amp; GEO</div>
+        <div class="desc">Discovery on traditional search and the new generation of AI engines reshaping how customers find you.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pillar 3 — dark featured banner -->
+  <div class="pillar pillar-c">
+    <div class="pillar-title-block">
+      <div class="pillar-num">Pillar 03</div>
+      <h3 class="pillar-h">Lifetime <em>Value.</em></h3>
+      <p class="pillar-line">Email, WhatsApp and automation systems that transform first-time buyers into regulars.</p>
+    </div>
+    <div class="service-grid">
+      <div class="service-card">
+        <div class="name">Email Marketing</div>
+        <div class="desc">Automated flows, monthly campaigns and post-purchase journeys that drive repeat revenue while you sleep.</div>
+      </div>
+      <div class="service-card">
+        <div class="name">WhatsApp Marketing</div>
+        <div class="desc">Personal, direct, fast — for the moments email can't reach.</div>
+      </div>
+      <div class="service-card">
+        <div class="name">Subscription &amp; Loyalty</div>
+        <div class="desc">Recurring revenue infrastructure built around the way florists actually sell.</div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- INTERLUDE -->
+<section class="interlude">
+  <div class="hairline"></div>
+  <blockquote>
+    &ldquo;We were juggling three different freelancers. Pollinate came in and just took it all over &mdash; our brand finally looks like us, our wedding enquiries have <span style="font-weight:500;background:linear-gradient(180deg,transparent 65%,rgba(228,153,131,0.35) 65%,rgba(228,153,131,0.35) 92%,transparent 92%);padding:0 2px">doubled</span>, and the leads actually convert.&rdquo;
+  </blockquote>
+  <div class="attribution">
+    Bella Petals<span>&middot; London</span>
+  </div>
+  <div class="bottom-hairline"></div>
+</section>
+
+<!-- B2B -->
+<section class="track-section b2b-section" id="b2b">
+
+  <div class="track-header">
+    <div class="eyebrow" style="background:var(--blush);color:var(--forest)"><span class="dot" style="background:var(--forest)"></span>B2B — Business Clients</div>
+    <h2>We build the GTM system that opens <em>enterprise doors.</em></h2>
+    <p class="sub">From positioning to pipeline — we architect the engine, run the outreach and book the meetings that build your B2B business.</p>
+    <div class="who-line">For florists whose growth depends on hotels, planners, corporates and luxury retail.</div>
+  </div>
+
+  <!-- Pillar 1 — featured engine -->
+  <div class="engine-banner">
+    <div class="pillar-num">Pillar 01 — The Engine</div>
+    <h3 class="pillar-h" style="color:var(--cream)">Go-to-Market <em>Engine.</em></h3>
+    <p class="pillar-line">Omni-channel outreach across every channel your buyer uses — engineered to convert cold to closed.</p>
+    <div class="service-grid">
+      <div class="service-card">
+        <div class="name">Email Outreach</div>
+        <div class="desc">Cold sequences that read like a human wrote them. Tested, iterated, optimised for reply rates.</div>
+      </div>
+      <div class="service-card">
+        <div class="name">LinkedIn Outreach</div>
+        <div class="desc">Daily, intelligent prospecting on the network where your buyers already are.</div>
+      </div>
+      <div class="service-card">
+        <div class="name">WhatsApp Outreach</div>
+        <div class="desc">Warm follow-up and nurture for prospects already in your orbit.</div>
+      </div>
+      <div class="service-card">
+        <div class="name">AI Voice Calling</div>
+        <div class="desc">Trained in your voice. Answers every inbound, follows every lead, books real meetings around the clock.</div>
+      </div>
+      <div class="service-card">
+        <div class="name">Lead Qualification &amp; CRM</div>
+        <div class="desc">Every signal scored, every lead tracked, every conversation logged.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pillar 2 -->
+  <div class="pillar">
+    <div class="pillar-title-block">
+      <div class="pillar-num">Pillar 02</div>
+      <h3 class="pillar-h">Brand &amp; <em>Positioning.</em></h3>
+      <p class="pillar-line">The credibility infrastructure that makes enterprise buyers say yes.</p>
+    </div>
+    <div class="service-grid">
+      <div class="service-card">
+        <div class="name">Industry-Specific Positioning</div>
+        <div class="desc">Distinct narratives and messaging for each buyer type — hotels, planners, corporates.</div>
+      </div>
+      <div class="service-card">
+        <div class="name">LinkedIn Profile Build</div>
+        <div class="desc">Founder profiles and company pages rebuilt as live sales channels.</div>
+      </div>
+      <div class="service-card">
+        <div class="name">Sales Assets</div>
+        <div class="desc">Landing pages, brochures, decks and case studies — the materials your buyers need to say yes internally.</div>
+      </div>
+      <div class="service-card">
+        <div class="name">Newsletter &amp; Content Marketing</div>
+        <div class="desc">Thought leadership that builds authority while you sleep.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pillar 3 -->
+  <div class="pillar">
+    <div class="pillar-title-block">
+      <div class="pillar-num">Pillar 03</div>
+      <h3 class="pillar-h">Demand <em>Architecture.</em></h3>
+      <p class="pillar-line">Inbound systems that bring qualified buyers to you.</p>
+    </div>
+    <div class="service-grid">
+      <div class="service-card">
+        <div class="name">Account-Based Marketing</div>
+        <div class="desc">Multi-touch, multi-channel campaigns aimed at your highest-value accounts.</div>
+      </div>
+      <div class="service-card">
+        <div class="name">SEO &amp; GEO for B2B</div>
+        <div class="desc">Found by buyers searching on Google and by AI engines like ChatGPT — built for B2B intent.</div>
+      </div>
+      <div class="service-card">
+        <div class="name">Industry-Specific Landing Pages</div>
+        <div class="desc">Tailored conversion engines for hotels, weddings, corporate gifting, events.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Industries -->
+  <div class="industries-title">Industries we serve</div>
+  <div class="industries-row">
+    <div class="industry-pill">Hotels</div>
+    <div class="industry-pill">Wedding Planners</div>
+    <div class="industry-pill">Corporate Gifting</div>
+    <div class="industry-pill">Event Production</div>
+    <div class="industry-pill">Restaurants</div>
+    <div class="industry-pill">Luxury Retail</div>
+  </div>
+
+  <!-- Speed signal -->
+  <div class="quick-note">
+    Live activity from week one — not paid pilots that take months.
+  </div>
+
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <h2>Ready to build<br>the <em>engine?</em></h2>
+  <p class="sub">A 15-minute call to see if we're the right fit. No pitch. No pressure.</p>
+  <a href="#contact" class="final-cta-btn">Book a Free Strategy Call →</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand-title">pollinate<span style="color:var(--blush)">.</span></div>
+      <p class="footer-brand-desc">The growth agency for florists. We handle your marketing so you can handle your craft.</p>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-label">Company</div>
+      <ul>
+        <li><a href="/services">Services</a></li>
+        <li><a href="/#faq">FAQ</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-label">Get in touch</div>
+      <ul>
+        <li><a href="mailto:hello@pollinate.ae">hello@pollinate.ae</a></li>
+        <li><a href="/#contact">Book a call</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    © 2026 Pollinate. All rights reserved.
+  </div>
+</footer>
+
+</body>
+</html>
