@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>if(/Mobi|Android|iPhone/i.test(navigator.userAgent)||window.innerWidth<768){window.location.replace("/m/services.html");}</script>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Services — Pollinate</title>
@@ -46,62 +44,84 @@ nav.top {
 .nav-links a { font-size: 14px; color: var(--ink); opacity: 0.75; }
 .nav-cta { background: var(--forest); color: var(--cream); padding: 11px 22px; border-radius: 100px; font-size: 14px; font-weight: 600; }
 
-/* HERO — SPLIT SCREEN */
-.hero-split {
-  position: relative;
-  height: 78vh;
-  min-height: 640px;
-  max-height: 820px;
-  overflow: hidden;
+/* HERO — HEADLINE + TWO CARDS */
+.hero-cards {
+  padding: 60px 32px 80px;
+  max-width: 1280px;
+  margin: 0 auto;
 }
-.hero-split-grid {
+.hero-cards-title {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 56px;
+}
+.hero-cards-title h1 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 72px; font-weight: 800; line-height: 1.05;
+  color: var(--forest); letter-spacing: -0.025em;
+  margin: 24px 0 22px;
+}
+.hero-cards-title h1 em {
+  color: var(--pink);
+  font-style: italic; font-weight: 600;
+}
+.hero-sub {
+  font-size: 17px; line-height: 1.55;
+  color: var(--forest-muted);
+  max-width: 580px; margin: 0 auto;
+}
+.hero-cards-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  height: 100%;
+  gap: 20px;
 }
-.hero-half {
+.hero-card {
   position: relative;
   display: block;
+  border-radius: 28px;
   overflow: hidden;
-  transition: filter 0.4s ease;
+  min-height: 460px;
   cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 20px rgba(28,58,42,0.06);
 }
-.hero-half:hover { filter: brightness(1.04); }
+.hero-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(28,58,42,0.12);
+}
 
-/* B2C half */
-.hero-half-b2c { background: var(--cream); }
-.hero-half-image {
+/* B2C card */
+.hero-card-b2c { background: var(--cream-2); }
+.hero-card-image {
   position: absolute;
   inset: 0;
   z-index: 0;
 }
-.hero-half-image img {
+.hero-card-image img {
   width: 100%; height: 100%; object-fit: cover;
   filter: saturate(0.92);
 }
-.hero-half-overlay {
+.hero-card-image-overlay {
   position: absolute; inset: 0;
-  background: linear-gradient(180deg, rgba(247,243,237,0.1) 0%, rgba(247,243,237,0.5) 70%, rgba(247,243,237,0.85) 100%);
+  background: linear-gradient(180deg, rgba(247,243,237,0.05) 0%, rgba(247,243,237,0.55) 60%, rgba(247,243,237,0.92) 100%);
 }
 
-/* B2B half */
-.hero-half-b2b { background: var(--forest); }
-.hero-half-graphic {
+/* B2B card */
+.hero-card-b2b { background: var(--forest); }
+.hero-card-graphic {
   position: absolute;
   inset: 0;
   z-index: 0;
 }
 
-/* Shared content block */
-.hero-half-content {
+/* Shared card content */
+.hero-card-content {
   position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 48px 56px;
+  bottom: 0; left: 0; right: 0;
+  padding: 36px 40px;
   z-index: 2;
 }
-.hero-half-tag {
+.hero-card-tag {
   display: inline-block;
   font-size: 11px; font-weight: 600; letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -111,78 +131,44 @@ nav.top {
   background: rgba(28,58,42,0.08);
   border-radius: 100px;
 }
-.hero-half-tag-light {
+.hero-card-tag-light {
   color: var(--blush);
   background: rgba(247,243,237,0.1);
 }
-.hero-half-title {
+.hero-card-title {
   font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 42px; font-weight: 800; line-height: 1.05;
+  font-size: 40px; font-weight: 800; line-height: 1.05;
   letter-spacing: -0.025em;
   color: var(--forest);
-  margin-bottom: 14px;
+  margin-bottom: 12px;
 }
-.hero-half-title em {
+.hero-card-title em {
   font-style: italic; font-weight: 500;
   color: var(--terra);
 }
-.hero-half-title-light { color: var(--cream); }
-.hero-half-title-light em { color: var(--blush); }
-.hero-half-line {
-  font-size: 15px; line-height: 1.5;
+.hero-card-title-light { color: var(--cream); }
+.hero-card-title-light em { color: var(--blush); }
+.hero-card-line {
+  font-size: 14.5px; line-height: 1.5;
   color: var(--forest-muted);
   max-width: 360px;
   margin-bottom: 22px;
 }
-.hero-half-line-light { color: rgba(247,243,237,0.75); }
-.hero-half-cta {
+.hero-card-line-light { color: rgba(247,243,237,0.78); }
+.hero-card-cta {
   display: inline-flex;
   align-items: center;
+  gap: 8px;
   font-size: 14px; font-weight: 600;
   color: var(--forest);
   border-bottom: 1.5px solid var(--forest);
   padding-bottom: 2px;
+  transition: gap 0.2s;
 }
-.hero-half-cta-light {
+.hero-card:hover .hero-card-cta { gap: 14px; }
+.hero-card-cta-light {
   color: var(--blush);
   border-bottom-color: var(--blush);
-}
-
-/* Centred floating headline */
-.hero-overlay-center {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  pointer-events: none;
-  z-index: 3;
-}
-.hero-overlay-inner {
-  background: var(--cream);
-  padding: 44px 56px;
-  border-radius: 24px;
-  text-align: center;
-  max-width: 620px;
-  box-shadow: 0 20px 60px rgba(28,58,42,0.18), 0 4px 16px rgba(28,58,42,0.08);
-  pointer-events: auto;
-}
-.hero-main-title {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 60px; font-weight: 800; line-height: 1.05;
-  color: var(--forest);
-  letter-spacing: -0.025em;
-  margin: 18px 0 18px;
-}
-.hero-main-title em {
-  color: var(--pink);
-  font-style: italic; font-weight: 600;
-}
-.hero-main-sub {
-  font-size: 16px; line-height: 1.55;
-  color: var(--forest-muted);
-  max-width: 480px;
-  margin: 0 auto;
 }
 
 /* HERO (OLD — kept hidden for safety) */
@@ -242,7 +228,24 @@ nav.top {
 
 /* TRACK BLOCKS — shared */
 .track-section { padding: 100px 0; }
-.track-header { max-width: 720px; margin: 0 auto 60px; text-align: center; }
+
+/* Scope band — between hero and B2C */
+.scope-band {
+  background: var(--cream);
+  padding: 56px 0 0;
+  text-align: center;
+}
+.scope-band p {
+  max-width: 720px;
+  margin: 0 auto;
+  font-family: 'Roboto Slab', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.55;
+  color: var(--forest-muted);
+}
+.track-header { max-width: 720px; margin: 0 auto 44px; text-align: center; }
 .track-header h2 {
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 56px; font-weight: 800; line-height: 1.08;
@@ -487,21 +490,12 @@ footer {
 
 /* RESPONSIVE */
 @media (max-width: 1024px) {
-  .hero-split { height: auto; min-height: 0; max-height: none; }
-  .hero-split-grid { grid-template-columns: 1fr; }
-  .hero-half { height: 360px; }
-  .hero-overlay-center {
-    position: relative;
-    inset: auto;
-    padding: 40px 24px;
-  }
-  .hero-overlay-inner {
-    padding: 32px 28px;
-    box-shadow: 0 10px 30px rgba(28,58,42,0.12);
-  }
-  .hero-main-title { font-size: 40px; }
-  .hero-half-content { padding: 36px 32px; }
-  .hero-half-title { font-size: 32px; }
+  .hero-cards { padding: 36px 20px 56px; }
+  .hero-cards-title h1 { font-size: 44px; }
+  .hero-cards-grid { grid-template-columns: 1fr; }
+  .hero-card { min-height: 340px; }
+  .hero-card-title { font-size: 32px; }
+  .hero-card-content { padding: 28px 28px; }
   .hero h1 { font-size: 52px; }
   .track-header h2 { font-size: 42px; }
   .pillar-a, .pillar-b { grid-template-columns: 1fr; gap: 32px; }
@@ -519,89 +513,91 @@ footer {
   <div class="logo">pollinate<span class="dot">.</span></div>
   <div class="nav-links">
     <a href="/">Home</a>
-    <a href="services.html">Services</a>
+    <a href="/services">Services</a>
     <a href="/#story">How it works</a>
     <a href="/#faq">FAQ</a>
     <a href="#contact" class="nav-cta">Book a Call</a>
   </div>
 </nav>
 
-<!-- HERO — Split screen -->
-<section class="hero-split">
-  <div class="hero-split-grid">
+<!-- HERO — Headline + Two cards -->
+<section class="hero-cards">
 
-    <!-- LEFT: B2C side -->
-    <a href="#b2c" class="hero-half hero-half-b2c">
-      <div class="hero-half-image">
+  <!-- Centred title -->
+  <div class="hero-cards-title">
+    <div class="eyebrow"><span class="dot"></span>Services</div>
+    <h1>Two engines.<br><em>One operator.</em></h1>
+    <p class="hero-sub">We design and operate the full marketing and sales stack, so your flowers reach the right customer, and your business reaches the right buyer.</p>
+  </div>
+
+  <!-- Two doors -->
+  <div class="hero-cards-grid">
+
+    <!-- B2C door -->
+    <a href="#b2c" class="hero-card hero-card-b2c">
+      <div class="hero-card-image">
         <img src="hero-1.avif" alt="Florist arranging flowers at workbench" />
-        <div class="hero-half-overlay"></div>
+        <div class="hero-card-image-overlay"></div>
       </div>
-      <div class="hero-half-content">
-        <div class="hero-half-tag">For Consumers</div>
-        <h2 class="hero-half-title">B2C<br><em>Consumer Growth.</em></h2>
-        <p class="hero-half-line">From storefront to inbox — the brand customers return to.</p>
-        <div class="hero-half-cta">Explore B2C ↓</div>
+      <div class="hero-card-content">
+        <div class="hero-card-tag">For Consumers</div>
+        <h2 class="hero-card-title">B2C<br><em>Consumer Growth.</em></h2>
+        <p class="hero-card-line">From storefront to inbox. The brand customers return to.</p>
+        <div class="hero-card-cta">Explore B2C <span>→</span></div>
       </div>
     </a>
 
-    <!-- RIGHT: B2B side -->
-    <a href="#b2b" class="hero-half hero-half-b2b">
-      <div class="hero-half-graphic">
-        <!-- Subtle geometric / network graphic -->
-        <svg width="100%" height="100%" viewBox="0 0 600 800" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <!-- B2B door -->
+    <a href="#b2b" class="hero-card hero-card-b2b">
+      <div class="hero-card-graphic">
+        <svg width="100%" height="100%" viewBox="0 0 500 400" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
           <defs>
-            <radialGradient id="b2b-glow" cx="50%" cy="40%" r="60%">
-              <stop offset="0%" stop-color="#F2D4C8" stop-opacity="0.18"/>
-              <stop offset="60%" stop-color="#F2D4C8" stop-opacity="0.04"/>
+            <radialGradient id="b2b-glow-card" cx="50%" cy="40%" r="55%">
+              <stop offset="0%" stop-color="#F2D4C8" stop-opacity="0.22"/>
               <stop offset="100%" stop-color="#F2D4C8" stop-opacity="0"/>
             </radialGradient>
           </defs>
-          <rect width="600" height="800" fill="url(#b2b-glow)"/>
-          <!-- Network nodes -->
-          <g opacity="0.35" stroke="#F2D4C8" stroke-width="0.8" fill="none">
-            <line x1="300" y1="320" x2="180" y2="220"/>
-            <line x1="300" y1="320" x2="420" y2="220"/>
-            <line x1="300" y1="320" x2="120" y2="380"/>
-            <line x1="300" y1="320" x2="480" y2="380"/>
-            <line x1="300" y1="320" x2="220" y2="500"/>
-            <line x1="300" y1="320" x2="380" y2="500"/>
-            <line x1="180" y1="220" x2="420" y2="220"/>
-            <line x1="120" y1="380" x2="220" y2="500"/>
-            <line x1="480" y1="380" x2="380" y2="500"/>
+          <rect width="500" height="400" fill="url(#b2b-glow-card)"/>
+          <g opacity="0.4" stroke="#F2D4C8" stroke-width="0.7" fill="none">
+            <line x1="250" y1="170" x2="130" y2="90"/>
+            <line x1="250" y1="170" x2="370" y2="90"/>
+            <line x1="250" y1="170" x2="90" y2="220"/>
+            <line x1="250" y1="170" x2="410" y2="220"/>
+            <line x1="250" y1="170" x2="180" y2="320"/>
+            <line x1="250" y1="170" x2="320" y2="320"/>
+            <line x1="130" y1="90" x2="370" y2="90"/>
+            <line x1="90" y1="220" x2="180" y2="320"/>
+            <line x1="410" y1="220" x2="320" y2="320"/>
           </g>
           <g fill="#F2D4C8" opacity="0.85">
-            <circle cx="300" cy="320" r="5"/>
-            <circle cx="180" cy="220" r="3.5"/>
-            <circle cx="420" cy="220" r="3.5"/>
-            <circle cx="120" cy="380" r="3.5"/>
-            <circle cx="480" cy="380" r="3.5"/>
-            <circle cx="220" cy="500" r="3.5"/>
-            <circle cx="380" cy="500" r="3.5"/>
+            <circle cx="250" cy="170" r="4.5"/>
+            <circle cx="130" cy="90" r="3"/>
+            <circle cx="370" cy="90" r="3"/>
+            <circle cx="90" cy="220" r="3"/>
+            <circle cx="410" cy="220" r="3"/>
+            <circle cx="180" cy="320" r="3"/>
+            <circle cx="320" cy="320" r="3"/>
           </g>
-          <g fill="#A6E07A" opacity="0.9">
-            <circle cx="300" cy="320" r="2"/>
-          </g>
+          <circle cx="250" cy="170" r="1.8" fill="#A6E07A"/>
         </svg>
       </div>
-      <div class="hero-half-content hero-half-content-light">
-        <div class="hero-half-tag hero-half-tag-light">For Business Clients</div>
-        <h2 class="hero-half-title hero-half-title-light">B2B<br><em>Enterprise Growth.</em></h2>
-        <p class="hero-half-line hero-half-line-light">From positioning to pipeline — the system that opens enterprise doors.</p>
-        <div class="hero-half-cta hero-half-cta-light">Explore B2B ↓</div>
+      <div class="hero-card-content hero-card-content-light">
+        <div class="hero-card-tag hero-card-tag-light">For Business Clients</div>
+        <h2 class="hero-card-title hero-card-title-light">B2B<br><em>Enterprise Growth.</em></h2>
+        <p class="hero-card-line hero-card-line-light">From positioning to pipeline. The system that opens enterprise doors.</p>
+        <div class="hero-card-cta hero-card-cta-light">Explore B2B <span>→</span></div>
       </div>
     </a>
 
   </div>
 
-  <!-- Centred floating headline ON TOP of the split -->
-  <div class="hero-overlay-center">
-    <div class="hero-overlay-inner">
-      <div class="eyebrow"><span class="dot"></span>Services</div>
-      <h1 class="hero-main-title">Two engines.<br><em>One operator.</em></h1>
-      <p class="hero-main-sub">We design and operate the full marketing and sales stack — so your flowers reach the right customer, and your business reaches the right buyer.</p>
-    </div>
-  </div>
+</section>
 
+<!-- SCOPE BAND -->
+<section class="scope-band">
+  <div class="container">
+    <p>Below is the full scope of what we do. We work with you to understand which services drive your brand's growth — customised to your business.</p>
+  </div>
 </section>
 
 <!-- B2C SECTION -->
@@ -611,8 +607,7 @@ footer {
     <div class="track-header">
       <div class="eyebrow"><span class="dot"></span>B2C — Consumer Growth</div>
       <h2>We build the brand customers <em>return to.</em></h2>
-      <p class="sub">From storefront to inbox — we architect the systems that grow your audience, deepen loyalty, and turn flowers into a brand that lasts.</p>
-      <div class="who-line">For floral studios, boutique shops and brands serving discerning consumers — couples, gift-buyers, regulars.</div>
+      <p class="sub">From storefront to inbox. We architect the systems that grow your audience, deepen loyalty, and turn flowers into a brand that lasts.</p>
     </div>
 
     <!-- Pillar 1 — Layout A (title left, services right) -->
@@ -620,20 +615,20 @@ footer {
       <div class="pillar-title-block">
         <div class="pillar-num">Pillar 01</div>
         <h3 class="pillar-h">Brand <em>Foundation.</em></h3>
-        <p class="pillar-line">A considered website, distinct identity and an always-on content engine — built to convert.</p>
+        <p class="pillar-line">A considered website, distinct identity and an always-on content engine, built to convert.</p>
       </div>
       <div class="service-grid">
         <div class="service-card">
           <div class="name">Website Development</div>
-          <div class="desc">We design, develop and operate websites built to convert — Shopify, custom builds, gifting, subscriptions, the lot.</div>
+          <div class="desc">We design, develop and operate websites built to convert. Shopify, custom builds, gifting, subscriptions, the lot.</div>
         </div>
         <div class="service-card">
           <div class="name">Brand Identity</div>
-          <div class="desc">Visual identity systems that feel as considered as your floristry.</div>
+          <div class="desc">We build the visual and verbal identity that defines your floristry: logo, typography, colour palette, photography direction and brand guidelines. Built from scratch for new florists, or refined for established shops ready for a new chapter.</div>
         </div>
         <div class="service-card">
           <div class="name">Content Production</div>
-          <div class="desc">Shoot ideation, raw footage editing, AI-generated photo and video — your brand, scaled.</div>
+          <div class="desc">Shoot ideation, raw footage editing, AI-generated photo and video. Your full content engine.</div>
         </div>
       </div>
     </div>
@@ -643,11 +638,11 @@ footer {
       <div class="service-grid">
         <div class="service-card">
           <div class="name">Social Media Management</div>
-          <div class="desc">Instagram and TikTok run like a content engine — strategy, captions, scheduling, community, growth.</div>
+          <div class="desc">Instagram and TikTok run like a content engine: strategy, captions, scheduling, community, growth.</div>
         </div>
         <div class="service-card">
           <div class="name">Performance Marketing</div>
-          <div class="desc">Paid acquisition across Google, Meta and TikTok — built to scale, measured to the pound.</div>
+          <div class="desc">Paid acquisition across Google and Meta. We plan, launch and optimise campaigns all towards growing the company's brand presence and revenue.</div>
         </div>
         <div class="service-card">
           <div class="name">SEO &amp; GEO</div>
@@ -657,7 +652,7 @@ footer {
       <div class="pillar-title-block">
         <div class="pillar-num">Pillar 02</div>
         <h3 class="pillar-h">Customer <em>Acquisition.</em></h3>
-        <p class="pillar-line">Social, paid and search architecture that turns reach into revenue.</p>
+        <p class="pillar-line">We run the social, paid and search campaigns that bring new customers in. At scale, profitably.</p>
       </div>
     </div>
 
@@ -673,11 +668,11 @@ footer {
         </div>
         <div class="service-card">
           <div class="name">WhatsApp Marketing</div>
-          <div class="desc">Personal, direct, fast — for the moments email can't reach.</div>
+          <div class="desc">Broadcasts, campaigns and instant assistance for your customers.</div>
         </div>
         <div class="service-card">
           <div class="name">Subscription &amp; Loyalty</div>
-          <div class="desc">Recurring revenue infrastructure built around the way florists actually sell.</div>
+          <div class="desc">Subscription plans, referral programmes and loyalty rewards that turn occasional buyers into monthly revenue, and your best customers into VIPs.</div>
         </div>
       </div>
     </div>
@@ -704,31 +699,30 @@ footer {
     <div class="track-header">
       <div class="eyebrow" style="background:var(--blush);color:var(--forest)"><span class="dot" style="background:var(--forest)"></span>B2B — Business Clients</div>
       <h2>We build the GTM system that opens <em>enterprise doors.</em></h2>
-      <p class="sub">From positioning to pipeline — we architect the engine, run the outreach and book the meetings that build your B2B business.</p>
-      <div class="who-line">For florists whose growth depends on hotels, wedding planners, corporates, event producers, restaurants and luxury retail.</div>
+      <p class="sub">From positioning to pipeline. We architect the engine, run the outreach and book the meetings that build your B2B business.</p>
     </div>
 
     <!-- Pillar 1 — Featured engine banner -->
     <div class="engine-banner">
       <div class="pillar-num">Pillar 01 — The Engine</div>
       <h3 class="pillar-h">Go-to-Market <em>Engine.</em></h3>
-      <p class="pillar-line">Omni-channel outreach across every channel your buyer uses — engineered to convert cold to closed.</p>
+      <p class="pillar-line">Omni-channel outreach across every channel your buyer uses. Engineered to turn outreach into closed deals.</p>
       <div class="engine-grid">
         <div class="service-card">
           <div class="name">Email Outreach</div>
-          <div class="desc">Cold sequences that read like a human wrote them. Tested, iterated, optimised for reply rates.</div>
+          <div class="desc">We map your offering to the right industries, run the email sequences, and hand qualified leads back for you to close.</div>
         </div>
         <div class="service-card">
           <div class="name">LinkedIn Outreach</div>
-          <div class="desc">Daily, intelligent prospecting on the network where your buyers already are.</div>
+          <div class="desc">We find the right decision-makers on LinkedIn, run sequenced outreach from your profile, and pass qualified conversations back for you to close.</div>
         </div>
         <div class="service-card">
           <div class="name">WhatsApp Outreach</div>
-          <div class="desc">Warm follow-up and nurture for prospects already in your orbit.</div>
+          <div class="desc">An additional touchpoint for conversations that stall on email or LinkedIn. We re-engage on WhatsApp, send across whatever information they need, and keep prospects moving toward a decision.</div>
         </div>
         <div class="service-card">
           <div class="name">AI Voice Calling</div>
-          <div class="desc">Trained in your voice. Answers every inbound, follows every lead, books real meetings around the clock.</div>
+          <div class="desc">An AI voice agent you can train on any accent, gender or voice — including your own. Handles inbound calls, follows up with leads, and qualifies prospects so your team only speaks to the ones worth speaking to.</div>
         </div>
         <div class="service-card">
           <div class="name">Lead Qualification &amp; CRM</div>
@@ -744,22 +738,18 @@ footer {
         <h3 class="pillar-h">Brand &amp; <em>Positioning.</em></h3>
         <p class="pillar-line">The credibility infrastructure that makes enterprise buyers say yes.</p>
       </div>
-      <div class="service-grid" style="grid-template-columns:repeat(2,1fr)">
+      <div class="service-grid" style="grid-template-columns:repeat(3,1fr)">
         <div class="service-card">
           <div class="name">Industry-Specific Positioning</div>
-          <div class="desc">Distinct narratives and messaging for each buyer type — hotels, planners, corporates.</div>
+          <div class="desc">Distinct narratives and messaging for each buyer type: hotels, planners, corporates.</div>
         </div>
         <div class="service-card">
-          <div class="name">LinkedIn Profile Build</div>
-          <div class="desc">Founder profiles and company pages rebuilt as live sales channels.</div>
+          <div class="name">LinkedIn Management</div>
+          <div class="desc">Ongoing management of your founder profile and company page. We post relevant content, engage in the conversations that matter, and build your brand presence with the buyers you're targeting.</div>
         </div>
         <div class="service-card">
           <div class="name">Sales Assets</div>
-          <div class="desc">Landing pages, brochures, decks and case studies — the materials your buyers need to say yes internally.</div>
-        </div>
-        <div class="service-card">
-          <div class="name">Newsletter &amp; Content Marketing</div>
-          <div class="desc">Thought leadership that builds authority while you sleep.</div>
+          <div class="desc">For high-value prospects, standard outreach isn't enough. We build personalised landing pages, tailored decks, brochures and case studies — built specifically for the account you're trying to win.</div>
         </div>
       </div>
     </div>
@@ -769,15 +759,15 @@ footer {
       <div class="service-grid">
         <div class="service-card">
           <div class="name">Account-Based Marketing</div>
-          <div class="desc">Multi-touch, multi-channel campaigns aimed at your highest-value accounts.</div>
+          <div class="desc">When there's an account you want to actively pursue, we run a coordinated multi-channel campaign across every relevant touchpoint — built to land that specific name.</div>
         </div>
         <div class="service-card">
           <div class="name">SEO &amp; GEO for B2B</div>
-          <div class="desc">Found by buyers searching on Google and by AI engines like ChatGPT — built for B2B intent.</div>
+          <div class="desc">Found by buyers searching on Google and by AI engines like ChatGPT. Built for B2B intent.</div>
         </div>
         <div class="service-card">
           <div class="name">Industry-Specific Landing Pages</div>
-          <div class="desc">Tailored conversion engines for hotels, weddings, corporate gifting, events.</div>
+          <div class="desc">When the strategy calls for it, we build dedicated landing pages for each vertical you serve — weddings, hotels, corporate gifting, events. Live on your site or as a hidden URL used in outreach and ads. Each one built to convert the buyer who lands on it.</div>
         </div>
       </div>
       <div class="pillar-title-block">
@@ -787,20 +777,9 @@ footer {
       </div>
     </div>
 
-    <!-- Industries served -->
-    <div class="industries-title">Industries we serve</div>
-    <div class="industries-row">
-      <div class="industry-pill">Hotels &amp; Hospitality</div>
-      <div class="industry-pill">Wedding Planners</div>
-      <div class="industry-pill">Corporate Gifting</div>
-      <div class="industry-pill">Event Production</div>
-      <div class="industry-pill">Restaurants</div>
-      <div class="industry-pill">Luxury Retail</div>
-    </div>
-
     <!-- Speed signal -->
     <div class="quick-note">
-      Live activity from week one — not paid pilots that take months.
+      Live activity from week one. Not paid pilots that take months.
     </div>
 
   </div>
@@ -811,7 +790,7 @@ footer {
   <div class="container">
     <h2>Ready to build<br>the <em>engine?</em></h2>
     <p class="sub">A 15-minute call to see if we're the right fit. No pitch. No pressure. Just a conversation.</p>
-    <a href="#contact" class="final-cta-btn">Book a Free Strategy Call →</a>
+    <a href="#contact" class="final-cta-btn">Let's Talk →</a>
   </div>
 </section>
 
@@ -821,12 +800,12 @@ footer {
     <div class="footer-top">
       <div>
         <div class="footer-brand-title">pollinate<span style="color:var(--blush)">.</span></div>
-        <p class="footer-brand-desc">The growth agency for florists. We handle your marketing so you can handle your craft.</p>
+        <p class="footer-brand-desc">The growth agency for florists.</p>
       </div>
       <div class="footer-col">
         <div class="footer-col-label">Company</div>
         <ul>
-          <li><a href="services.html">Services</a></li>
+          <li><a href="/services">Services</a></li>
           <li><a href="/#faq">FAQ</a></li>
         </ul>
       </div>
