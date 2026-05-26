@@ -2,6 +2,16 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script>
+  // Mobile redirect — runs before page render
+  (function() {
+    if (window.location.pathname.indexOf('/m/') === 0) return;
+    var isMobile = /Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth < 768;
+    if (isMobile) {
+      window.location.replace('/m/services.html' + window.location.search + window.location.hash);
+    }
+  })();
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Services — Pollinate</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
