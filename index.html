@@ -37,7 +37,7 @@
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; scroll-padding-top: 90px; }
 
 body {
   font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
@@ -59,12 +59,16 @@ img { max-width: 100%; display: block; }
    NAV
 ======================================================================== */
 nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 28px 40px;
+  padding: 22px max(40px, calc((100% - 1200px) / 2 + 40px));
+  background: rgba(247, 243, 237, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 .nav-links { display: flex; gap: 32px; }
 .nav-links a {

@@ -31,6 +31,7 @@
   --sage: #A6B89A;
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: 90px; }
 html, body { background: var(--cream); color: var(--ink); font-family: 'Plus Jakarta Sans', sans-serif; -webkit-font-smoothing: antialiased; }
 a { color: inherit; text-decoration: none; }
 em { font-style: italic; font-weight: 500; }
@@ -45,8 +46,11 @@ em { font-style: italic; font-weight: 500; }
 
 /* NAV */
 nav.top {
+  position: sticky; top: 0; z-index: 100;
   display: flex; justify-content: space-between; align-items: center;
-  padding: 22px 32px; max-width: 1180px; margin: 0 auto;
+  padding: 22px max(32px, calc((100% - 1180px) / 2 + 32px));
+  background: rgba(247, 243, 237, 0.85);
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
 }
 .logo { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 22px; letter-spacing: -0.02em; color: var(--forest); }
 .logo .dot { color: var(--forest); }
